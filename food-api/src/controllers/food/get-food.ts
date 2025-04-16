@@ -1,9 +1,9 @@
-export const getFood = (req, res) => {
-  res.json([
-    { name: "food1", price: 10 },
-    {
-      name: "food2",
-      price: 20,
-    },
-  ]);
+import { foodModel } from "../../models/food.model";
+
+export const getFood = async (req, res) => {
+  const food = await foodModel.find({});
+
+  return res.status(200).json({
+    food,
+  });
 };

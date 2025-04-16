@@ -1,16 +1,14 @@
-import { RequestHandler } from "express";
 import { categoryModel } from "../../models/category.model";
 
-export const postCategoryasd: RequestHandler = async (req, res) => {
+export const deleteFoodCategory = async (req, res) => {
   try {
     const { categoryName } = req.body;
-    await categoryModel.create({
+    await categoryModel.deleteOne({
       categoryName,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     });
+
     res.status(200).json({
-      message: "Category nemegdsen",
+      message: "Category ustgagdlaa",
     });
   } catch (error) {
     res.status(500).json({
