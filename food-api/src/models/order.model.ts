@@ -1,21 +1,33 @@
 import { Schema, model } from "mongoose";
-
+const orderItemSchema = new Schema({
+  food: {
+    type: Schema.Types.ObjectId,
+    ref: "food",
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+});
 const orderSchema = new Schema({
   user: {
-    type: String,
-    required: false,
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
   },
   totalPrice: {
     type: Number,
     required: true,
   },
   foodOrderItems: {
-    type: [String],
-    required: true,
+    type: [orderItemSchema],
+    default: [],
   },
   status: {
     type: String,
-    required: true,
+    enum: ["pending", "delivered", "cancelled"],
+    default: "pending",
   },
   createdAt: {
     type: Date,

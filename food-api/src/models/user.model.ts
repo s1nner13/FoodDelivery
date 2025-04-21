@@ -17,18 +17,12 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    required: true,
-  },
   orderedFoods: {
-    type: [String],
-    required: true,
+    type: [Schema.Types.ObjectId],
+    ref: "category",
+    default: [],
   },
-  ttl: {
-    type: Date,
-    required: true,
-  },
+
   isVerified: {
     type: Boolean,
     required: true,
@@ -40,6 +34,11 @@ const userSchema = new Schema({
   updatedAt: {
     type: Date,
     required: true,
+  },
+  role: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user",
   },
 });
 

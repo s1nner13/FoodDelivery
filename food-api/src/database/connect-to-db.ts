@@ -6,4 +6,4 @@ export const connectToDatabase = async () => {
   );
   console.log("Connect to database");
 };
-//inam songogdson utga haih
+//enam songogdson utga haih
